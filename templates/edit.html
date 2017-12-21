@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <h2>Edit Post</h2>
+    <div>
+    <form action="/save" method="post">
+      <label for="user">Title: </label><br>
+      <input type="text" name="title" value="{{ entry.title }}"></input><br><br>
+      <label for="user">Content: </label><br>
+      <textarea name="content" rows=10 cols=50 value="{{ entry.content }}">{{ entry.content }}</textarea>
+      <input type="text" name="timeEntry" hidden="true" value="{{ entry.timeEntry }}"></input>
+      <input type="text" name="id" hidden="true" value="{{ entry.id }}"></input><br>
+      <input type="submit" value="Submit"></input><br><br>
+    </form>
+    <form action="/dashboard" method="post">
+        <input type="submit" value="Cancel"></input>
+    </form>
+    </div>
+{% endif %}
+{% endblock %}

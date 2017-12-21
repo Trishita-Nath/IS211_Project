@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method=post>
+      <dl>
+        <dt>Title of the Post:
+        <dd><input type=text size=30 name=title>
+        <dt>Description:
+        <dd><textarea name=content rows=10 cols=50></textarea>
+        <dd><input type=submit value="Submit">
+      </dl>
+    </form>
+  {% endif %}
+
+    <h2>Published Posts</h2>
+    {% for entry in entries %}
+      <table name="blogEntries">
+        <tr>
+          <td>{{ entry.title }}</td>
+          <td><form action="/edit" method="post">
+                <input type="text" name='id' hidden="true" value="{{ entry.id }}"/>
+                <input type="submit" value="Edit"></input>
+              </form>
+          </td>
+          <td><form action="/delete" method="post">
+                <input type="text" name='id' hidden="true" value="{{ entry.id }}"/>
+                <input type="submit" value="Delete"></input>
+              </form>
+          </td>
+          <td><a href='{{ entry.permalink }}'>Link to Post</a></td>
+        </tr>
+      </table>
+    {% endfor %}
+{% endblock %}

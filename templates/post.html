@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <h2 align="center">Post Information</h2>
+  <br>
+    <h2><em>{{ post.title }}</h2></em>{{ post.content }}
+    <p>Time Posted: {{ post.timeEntry }}</p>
+  <br><br>
+  <a href='{{ request.referrer }}'>Back</a>
+
+{% endblock %}

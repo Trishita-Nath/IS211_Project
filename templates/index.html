@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+  <ul class=entries>
+  {% for entry in entries %}
+        <h2>{{ entry.title }}</h2>{{ entry.content|safe }}
+          <br>Time Posted: {{ entry.timeEntry }}<br>
+          <a href='{{ entry.permalink }}'>Link to Post</a>
+          <hr>
+  {% endfor %}
+  </ul>
+{% endblock %}

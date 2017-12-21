@@ -1,0 +1,19 @@
+<!doctype html>
+<title>My Blog</title>
+<div style="background-color:powderblue;">
+<center>
+  <h1>My Blog</h1>
+  <div>
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>&nbsp;
+    <a href="{{ url_for('home_page') }}">home</a>
+  {% else %}
+    <a href="{{ url_for('logout') }}">log out</a>&nbsp;
+    <a href="{{ url_for('dashboard') }}">dashboard</a>&nbsp;
+    <a href="{{ url_for('home_page') }}">home</a>
+  {% endif %}
+  </div>
+  
+  {% block body %}{% endblock %}
+  </center>
+</div>
